@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: [
       "snk-backend-ten.vercel.app",
-      "snk-prop.s3.eu-north-1.amazonaws.com",
+      "snk-prop.s3.us-east-1.amazonaws.com",
       "example.com",
     ],
   },
