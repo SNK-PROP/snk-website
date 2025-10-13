@@ -452,11 +452,10 @@ export default function PropertiesPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">All Types</SelectItem>
-                        <SelectItem value="Apartment">Apartment</SelectItem>
-                        <SelectItem value="House">House</SelectItem>
                         <SelectItem value="Villa">Villa</SelectItem>
-                        <SelectItem value="Cottage">Cottage</SelectItem>
                         <SelectItem value="Commercial">Commercial</SelectItem>
+                        <SelectItem value="Farmhouse">Farmhouse</SelectItem>
+                        <SelectItem value="Warehouse">Warehouse</SelectItem>
                         <SelectItem value="Land">Land</SelectItem>
                       </SelectContent>
                     </Select>
@@ -835,12 +834,11 @@ export default function PropertiesPage() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="Apartment">Apartment</SelectItem>
-                            <SelectItem value="House">House</SelectItem>
                             <SelectItem value="Villa">Villa</SelectItem>
-                            <SelectItem value="Cottage">Cottage</SelectItem>
                             <SelectItem value="Commercial">Commercial</SelectItem>
                             <SelectItem value="Land">Land</SelectItem>
+                            <SelectItem value="Farmhouse">Farmhouse</SelectItem>
+                            <SelectItem value="Warehouse">Warehouse</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
