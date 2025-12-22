@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://snk-backend-ten.vercel.app/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 class ApiService {
   constructor() {
@@ -528,6 +528,67 @@ class ApiService {
 
   async updatePropertyDetails(id, updateData) {
     const response = await this.api.put(`/properties/admin/${id}/edit`, updateData);
+    return response.data;
+  }
+
+  // Notification Management
+  async sendNotification(notificationData) {
+    const response = await this.api.post('/notifications/send', notificationData);
+    return response.data;
+  }
+
+  async sendTestNotification(notificationData) {
+    const response = await this.api.post('/notifications/test', notificationData);
+    return response.data;
+  }
+
+  async sendNewPropertyNotification(propertyData) {
+    const response = await this.api.post('/notifications/new-property', propertyData);
+    return response.data;
+  }
+
+  async getNotificationHistory(params = {}) {
+    const response = await this.api.get('/notifications/history', { params });
+    return response.data;
+  }
+
+  async getNotificationById(id) {
+    const response = await this.api.get(`/notifications/${id}`);
+    return response.data;
+  }
+
+  async updateNotification(id, updateData) {
+    const response = await this.api.put(`/notifications/${id}`, updateData);
+    return response.data;
+  }
+
+  async cancelNotification(id) {
+    const response = await this.api.post(`/notifications/${id}/cancel`);
+    return response.data;
+  }
+
+  async deleteNotification(id) {
+    const response = await this.api.delete(`/notifications/${id}`);
+    return response.data;
+  }
+
+  async getNotificationStats(params = {}) {
+    const response = await this.api.get('/notifications/stats/overview', { params });
+    return response.data;
+  }
+
+  async processPendingNotifications() {
+    const response = await this.api.post('/notifications/process-pending');
+    return response.data;
+  }
+
+  async retryFailedNotifications() {
+    const response = await this.api.post('/notifications/retry-failed');
+    return response.data;
+  }
+
+  async cleanupNotifications() {
+    const response = await this.api.post('/notifications/cleanup');
     return response.data;
   }
 }

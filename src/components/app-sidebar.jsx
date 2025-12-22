@@ -11,7 +11,8 @@ import {
   IconBuildingStore,
   IconBriefcase,
   IconGift,
-  IconDeviceMobile
+  IconDeviceMobile,
+  IconBell
 } from "@tabler/icons-react";
 import {
   DropdownMenu,
@@ -76,6 +77,11 @@ const staticData = {
       title: "App Versions",
       url: "/app-versions",
       icon: IconDeviceMobile,
+    },
+    {
+      title: "Notifications",
+      url: "/notifications",
+      icon: IconBell,
     },
   ],
   navSecondary: [
