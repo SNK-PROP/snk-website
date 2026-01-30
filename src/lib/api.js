@@ -591,6 +591,60 @@ class ApiService {
     const response = await this.api.post('/notifications/cleanup');
     return response.data;
   }
+
+  // ============ PUBLIC API METHODS (No auth required) ============
+
+  // Contact/Inquiry Methods
+  async submitContactInquiry(inquiryData) {
+    const response = await this.api.post('/contact/inquiry', inquiryData);
+    return response.data;
+  }
+
+  async submitPropertyInquiry(propertyId, inquiryData) {
+    const response = await this.api.post(`/contact/properties/${propertyId}/inquiry`, inquiryData);
+    return response.data;
+  }
+
+  // Get similar properties for "Similar Properties" section
+  async getSimilarProperties(propertyId) {
+    const response = await this.api.get(`/contact/properties/similar/${propertyId}`);
+    return response.data;
+  }
+
+  // Get public broker directory
+  async getPublicBrokers(params = {}) {
+    const response = await this.api.get('/contact/brokers/public', { params });
+    return response.data;
+  }
+
+  // Get broker profile details
+  async getBrokerProfile(brokerId) {
+    const response = await this.api.get(`/brokers/${brokerId}`);
+    return response.data;
+  }
+
+  // Get public site statistics
+  async getPublicStatistics() {
+    const response = await this.api.get('/contact/statistics/public');
+    return response.data;
+  }
+
+  // ============ PUBLIC PROPERTY SEARCH METHODS ============
+
+  // Search properties with filters (used by /properties page)
+  async searchProperties(filters = {}) {
+    return await this.getProperties(filters);
+  }
+
+  // Get properties by type
+  async getPropertiesByType(propertyType) {
+    return await this.getProperties({ propertyType, approvalStatus: 'approved', status: 'Active' });
+  }
+
+  // Get featured properties
+  async getFeaturedProperties(limit = 6) {
+    return await this.getProperties({ isFeatured: true, limit, approvalStatus: 'approved', status: 'Active' });
+  }
 }
 
 export const apiService = new ApiService();

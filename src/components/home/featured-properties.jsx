@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { fetchProperties, formatPrice, getPropertyTypeIcon, getPropertyStatus } from '../../lib/data'
 
 export default function FeaturedProperties() {
@@ -14,7 +15,8 @@ export default function FeaturedProperties() {
         const response = await fetchProperties({
           limit: 6,
           isFeatured: true,
-          propertyType: 'commercial'
+          approvalStatus: 'approved',
+          status: 'Active'
         })
         setProperties(response.properties || [])
       } catch (error) {
@@ -27,12 +29,6 @@ export default function FeaturedProperties() {
 
     loadProperties()
   }, [])
-
-  const handleViewDetails = (propertyId) => {
-    // Navigate to property details page
-    console.log('Viewing property:', propertyId)
-    // In real app: router.push(`/property/${propertyId}`)
-  }
 
   if (loading) {
     return (
@@ -123,11 +119,11 @@ export default function FeaturedProperties() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {properties.map((property, index) => (
-              <div
+              <Link
                 key={property.id}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-4 border border-gray-100 animate-slide-in-up"
+                href={`/property/${property.id}`}
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-4 border border-gray-100 animate-slide-in-up block"
                 style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => handleViewDetails(property.id)}
               >
                 {/* Property Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -233,32 +229,32 @@ export default function FeaturedProperties() {
                   </div>
 
                   {/* View Details Button */}
-                  <button className="w-full bg-gradient-to-r from-primary-blue to-blue-700 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                  <div className="w-full bg-gradient-to-r from-primary-blue to-blue-700 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
                     View Details
-                    <svg className="w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </button>
+                  </div>
                 </div>
 
                 {/* Decorative corner elements */}
                 <div className="absolute top-0 left-0 w-8 h-8 bg-gradient-to-br from-primary-blue to-transparent rounded-bl-2xl"></div>
                 <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-tl from-gold to-transparent rounded-tr-2xl"></div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
 
         <div className="text-center mt-16 animate-slide-in-up animate-delay-600">
-          <a
-            href="#"
+          <Link
+            href="/properties"
             className="inline-flex items-center bg-gradient-to-r from-primary-blue to-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-1"
           >
             View All Properties
-            <svg className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -153,3 +153,81 @@ export const getPropertyTypeIcon = (type) => {
       return '🏠'
   }
 }
+
+// ============ NEW: Contact & Inquiry Methods ============
+
+export const submitContactInquiry = async (inquiryData) => {
+  try {
+    const response = await apiService.submitContactInquiry(inquiryData)
+    return { success: true, data: response }
+  } catch (error) {
+    console.error('Error submitting contact inquiry:', error)
+    return {
+      success: false,
+      error: error.response?.data?.message || error.message || 'Failed to submit inquiry'
+    }
+  }
+}
+
+export const submitPropertyInquiry = async (propertyId, inquiryData) => {
+  try {
+    const response = await apiService.submitPropertyInquiry(propertyId, inquiryData)
+    return { success: true, data: response }
+  } catch (error) {
+    console.error('Error submitting property inquiry:', error)
+    return {
+      success: false,
+      error: error.response?.data?.message || error.message || 'Failed to submit inquiry'
+    }
+  }
+}
+
+// ============ NEW: Similar Properties ============
+
+export const fetchSimilarProperties = async (propertyId) => {
+  try {
+    const response = await apiService.getSimilarProperties(propertyId)
+    return response
+  } catch (error) {
+    console.error('Error fetching similar properties:', error)
+    return { properties: [] }
+  }
+}
+
+// ============ NEW: Public Statistics ============
+
+export const fetchPublicStatistics = async () => {
+  try {
+    const response = await apiService.getPublicStatistics()
+    return response
+  } catch (error) {
+    console.error('Error fetching public statistics:', error)
+    // Return fallback stats if API fails
+    return {
+      totalProperties: 5000,
+      featuredProperties: 120,
+      totalBrokers: 150,
+      totalCities: 25,
+      propertiesByType: [],
+      cities: []
+    }
+  }
+}
+
+// ============ NEW: Search Methods ============
+
+export const searchProperties = async (filters = {}) => {
+  return await fetchProperties(filters)
+}
+
+// ============ NEW: Broker Methods ============
+
+export const fetchPublicBrokers = async (filters = {}) => {
+  try {
+    const response = await apiService.getPublicBrokers(filters)
+    return response
+  } catch (error) {
+    console.error('Error fetching public brokers:', error)
+    return { brokers: [], pagination: { current: 1, pages: 1, total: 0 } }
+  }
+}

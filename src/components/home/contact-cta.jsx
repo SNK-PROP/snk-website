@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { submitContactInquiry } from '@/lib/data'
 
 export default function ContactCTA() {
   const [formData, setFormData] = useState({
@@ -9,13 +10,34 @@ export default function ContactCTA() {
     phone: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // In real app: Send form data to backend
-    alert('Thank you for your inquiry! We will contact you soon.')
-    setFormData({ name: '', email: '', phone: '', message: '' })
+    setIsSubmitting(true)
+    setError(null)
+
+    try {
+      // Submit general contact inquiry via API
+      const result = await submitContactInquiry(formData)
+
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', phone: '', message: '' })
+
+        // Reset form after 5 seconds
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        setError(result.error || 'Failed to submit inquiry. Please try again.')
+      }
+    } catch (err) {
+      console.error('Error submitting form:', err)
+      setError('An error occurred. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -150,93 +172,112 @@ export default function ContactCTA() {
                   <h3 className="text-3xl font-bold text-primary-blue">Get in Touch</h3>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-gray-700">
-                        Full Name *
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          className="search-input w-full"
-                          placeholder="Enter your full name"
-                        />
-                        <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium mb-2 text-gray-700">
-                        Email Address *
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="search-input w-full"
-                          placeholder="Enter your email"
-                        />
-                        <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-gray-700">
-                      Phone Number *
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="search-input w-full"
-                        placeholder="Enter your phone number"
-                      />
-                      <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-gray-700">
-                      Property Requirements
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={4}
-                      className="search-input w-full"
-                      placeholder="Tell us about your property requirements..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-gold to-yellow-400 text-primary-blue py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    <span>Submit Inquiry</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                {/* Success Message */}
+                {submitted ? (
+                  <div className="py-12 text-center">
+                    <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                  </button>
-                </form>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h4>
+                    <p className="text-gray-600">We've received your inquiry and will contact you shortly.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Error Message */}
+                    {error && (
+                      <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                        {error}
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium mb-2 text-gray-700">
+                          Full Name *
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="search-input w-full"
+                            placeholder="Enter your full name"
+                          />
+                          <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-2 text-gray-700">
+                          Email Address *
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="search-input w-full"
+                            placeholder="Enter your email"
+                          />
+                          <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-gray-700">
+                        Phone Number *
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
+                          className="search-input w-full"
+                          placeholder="Enter your phone number"
+                        />
+                        <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-gray-700">
+                        Property Requirements
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows={4}
+                        className="search-input w-full"
+                        placeholder="Tell us about your property requirements..."
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-gold to-yellow-400 text-primary-blue py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                    >
+                      <span>{isSubmitting ? 'Submitting...' : 'Submit Inquiry'}</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>

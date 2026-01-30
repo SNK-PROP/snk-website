@@ -1,18 +1,34 @@
 "use client"
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function HeroSection() {
+  const router = useRouter()
   const [searchData, setSearchData] = useState({
     location: '',
     propertyType: '',
+    transactionType: '',
     minPrice: '',
     maxPrice: ''
   })
 
   const handleSearch = (e) => {
     e.preventDefault()
-    // This would typically call an API endpoint
-    console.log('Searching with:', searchData)
+
+    // Build query parameters
+    const params = new URLSearchParams()
+    if (searchData.location) params.append('location', searchData.location)
+    if (searchData.propertyType) params.append('propertyType', searchData.propertyType)
+    if (searchData.transactionType) params.append('transactionType', searchData.transactionType)
+    if (searchData.minPrice) params.append('minPrice', searchData.minPrice)
+    if (searchData.maxPrice) params.append('maxPrice', searchData.maxPrice)
+
+    // Navigate to properties page
+    router.push(`/properties?${params.toString()}`)
+  }
+
+  const handleQuickSearch = (location) => {
+    router.push(`/properties?location=${encodeURIComponent(location)}`)
   }
 
   const propertyTypes = [
@@ -75,6 +91,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
+                  onClick={() => router.push('/properties')}
                   className="btn-secondary group flex items-center gap-2 transform transition-all hover:scale-105"
                 >
                   <span>Explore Properties</span>
@@ -84,6 +101,7 @@ export default function HeroSection() {
                 </button>
                 <button
                   type="button"
+                  onClick={() => router.push('/contact')}
                   className="border-2 border-gold text-gold hover:bg-gold hover:text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
                 >
                   Free Property Valuation
@@ -168,10 +186,15 @@ export default function HeroSection() {
                           <label className="block text-sm font-medium text-gray-700 mb-2">
                             Transaction Type
                           </label>
-                          <select className="search-input w-full text-gray-900">
-                            <option>For Sale</option>
-                            <option>For Rent</option>
-                            <option>For Lease</option>
+                          <select
+                            value={searchData.transactionType}
+                            onChange={(e) => setSearchData({...searchData, transactionType: e.target.value})}
+                            className="search-input w-full text-gray-900"
+                          >
+                            <option value="">All Types</option>
+                            <option value="sale">For Sale</option>
+                            <option value="rent">For Rent</option>
+                            <option value="lease">For Lease</option>
                           </select>
                         </div>
                       </div>
@@ -224,22 +247,40 @@ export default function HeroSection() {
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
                   <div className="flex flex-wrap gap-2">
-                    <button className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100">
+                    <button
+                      onClick={() => handleQuickSearch('Mumbai')}
+                      className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100"
+                    >
                       Mumbai
                     </button>
-                    <button className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100">
+                    <button
+                      onClick={() => handleQuickSearch('Delhi')}
+                      className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100"
+                    >
                       Delhi
                     </button>
-                    <button className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100">
+                    <button
+                      onClick={() => handleQuickSearch('Bangalore')}
+                      className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100"
+                    >
                       Bangalore
                     </button>
-                    <button className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100">
+                    <button
+                      onClick={() => handleQuickSearch('Hyderabad')}
+                      className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100"
+                    >
                       Hyderabad
                     </button>
-                    <button className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100">
+                    <button
+                      onClick={() => handleQuickSearch('Chennai')}
+                      className="text-sm text-gray-600 hover:text-primary-blue transition-colors px-3 py-1 rounded-full hover:bg-gray-100"
+                    >
                       Chennai
                     </button>
-                    <button className="text-sm text-primary-blue font-medium">
+                    <button
+                      onClick={() => router.push('/properties')}
+                      className="text-sm text-primary-blue font-medium hover:underline"
+                    >
                       View All
                     </button>
                   </div>

@@ -1,29 +1,7 @@
-const stats = [
-  {
-    number: '5000+',
-    label: 'Properties Listed',
-    icon: '🏢',
-    color: 'from-blue-500 to-blue-600'
-  },
-  {
-    number: '1200+',
-    label: 'Happy Clients',
-    icon: '😊',
-    color: 'from-green-500 to-green-600'
-  },
-  {
-    number: '150+',
-    label: 'Agents Network',
-    icon: '👥',
-    color: 'from-gold to-yellow-500'
-  },
-  {
-    number: '25',
-    label: 'Cities Covered',
-    icon: '📍',
-    color: 'from-purple-500 to-purple-600'
-  }
-]
+"use client"
+
+import { useEffect, useState } from 'react'
+import { fetchPublicStatistics } from '@/lib/data'
 
 const features = [
   {
@@ -91,7 +69,119 @@ const testimonials = [
   }
 ]
 
+// Fallback stats in case API fails
+const fallbackStats = [
+  {
+    number: '5000+',
+    label: 'Properties Listed',
+    icon: '🏢',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    number: '1200+',
+    label: 'Happy Clients',
+    icon: '😊',
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    number: '150+',
+    label: 'Agents Network',
+    icon: '👥',
+    color: 'from-gold to-yellow-500'
+  },
+  {
+    number: '25',
+    label: 'Cities Covered',
+    icon: '📍',
+    color: 'from-purple-500 to-purple-600'
+  }
+]
+
+// Animated stat counter component
+function StatCounter({ end, duration = 2000 }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let startTime
+    let startValue = 0
+    const endValue = parseInt(end.replace(/[^0-9]/g, '')) || 0
+
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+      const currentValue = Math.floor(startValue + (endValue - startValue) * easeOutQuart)
+
+      setCount(currentValue)
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [end, duration])
+
+  return (
+    <span>
+      {count.toLocaleString()}{end.includes('+') && '+'}
+    </span>
+  )
+}
+
 export default function WhyChooseSNK() {
+  const [stats, setStats] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const response = await fetchPublicStatistics()
+
+        // Transform API data to stats format
+        const apiStats = [
+          {
+            number: response.totalProperties?.toLocaleString() + '+',
+            label: 'Properties Listed',
+            icon: '🏢',
+            color: 'from-blue-500 to-blue-600'
+          },
+          {
+            number: Math.floor(response.totalProperties * 0.25).toLocaleString() + '+',
+            label: 'Happy Clients',
+            icon: '😊',
+            color: 'from-green-500 to-green-600'
+          },
+          {
+            number: response.totalBrokers?.toLocaleString() + '+',
+            label: 'Agents Network',
+            icon: '👥',
+            color: 'from-gold to-yellow-500'
+          },
+          {
+            number: response.totalCities?.toString() || '25',
+            label: 'Cities Covered',
+            icon: '📍',
+            color: 'from-purple-500 to-purple-600'
+          }
+        ]
+
+        setStats(apiStats)
+      } catch (error) {
+        console.error('Error loading stats:', error)
+        setStats(fallbackStats)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadStats()
+  }, [])
+
+  const displayStats = stats || fallbackStats
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-gray-100 relative overflow-hidden">
       {/* Background decoration */}
@@ -116,7 +206,7 @@ export default function WhyChooseSNK() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {stats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <div
               key={index}
               className="text-center group cursor-pointer transform transition-all duration-300 hover:scale-105"
@@ -128,7 +218,8 @@ export default function WhyChooseSNK() {
                 <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold rounded-full animate-ping"></div>
               </div>
               <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-blue to-blue-600 bg-clip-text text-transparent mb-2">
-                {stat.number}
+                {!loading && <StatCounter end={stat.number} />}
+                {loading && stat.number}
               </div>
               <div className="text-gray-700 font-medium">{stat.label}</div>
             </div>

@@ -1,4 +1,7 @@
+"use client"
+
 import { useState } from 'react'
+import { submitPropertyInquiry } from '@/lib/data'
 
 export default function ContactForm({ property, agent }) {
   const [formData, setFormData] = useState({
@@ -11,35 +14,36 @@ export default function ContactForm({ property, agent }) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Submit property inquiry via API
+      const result = await submitPropertyInquiry(property?.id, formData)
 
-      console.log('Contact form submitted:', {
-        property: property.title,
-        agent: agent.name,
-        formData
-      })
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          budget: '',
+          preferredTime: ''
+        })
 
-      setSubmitted(true)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        budget: '',
-        preferredTime: ''
-      })
-
-      // Reset form after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000)
-    } catch (error) {
-      console.error('Error submitting form:', error)
+        // Reset form after 5 seconds
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        setError(result.error || 'Failed to submit inquiry. Please try again.')
+      }
+    } catch (err) {
+      console.error('Error submitting form:', err)
+      setError('An error occurred. Please try again later.')
     } finally {
       setIsSubmitting(false)
     }
@@ -57,22 +61,22 @@ export default function ContactForm({ property, agent }) {
       <h3 className="text-lg font-semibold mb-3">Your Agent</h3>
       <div className="flex items-center gap-4">
         <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-          <span className="text-xl font-bold text-gray-600">{agent.name.charAt(0)}</span>
+          <span className="text-xl font-bold text-gray-600">{agent?.name?.charAt(0) || '?'}</span>
         </div>
         <div className="flex-1">
-          <h4 className="font-semibold text-gray-900">{agent.name}</h4>
-          <p className="text-sm text-gray-600 mb-2">Professional Agent • {agent.experience} experience</p>
-          <p className="text-sm text-gray-600">{agent.company}</p>
+          <h4 className="font-semibold text-gray-900">{agent?.name || property?.brokerName || 'Our Agent'}</h4>
+          <p className="text-sm text-gray-600 mb-2">Professional Agent • {agent?.experience || property?.brokerExperience || 'Experienced'}</p>
+          <p className="text-sm text-gray-600">{agent?.company || property?.brokerCompany || 'SNK RealEstate'}</p>
         </div>
         <div className="text-right">
           <a
-            href={`tel:${agent.phone}`}
+            href={`tel:${agent?.phone || property?.brokerContact || '+919876543210'}`}
             className="block btn-primary text-white text-sm mb-2"
           >
-            Call {agent.name}
+            Call {agent?.name?.split(' ')[0] || 'Agent'}
           </a>
           <a
-            href={`mailto:${agent.email}`}
+            href={`mailto:${agent?.email || 'info@snkrealestate.com'}`}
             className="block btn-secondary text-white text-sm"
           >
             Email
@@ -91,10 +95,11 @@ export default function ContactForm({ property, agent }) {
           </svg>
           <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
           <p className="text-gray-600 mb-4">
-            We have received your inquiry for "{property.title}". Our agent {agent.name} will contact you shortly.
+            We have received your inquiry for "{property?.title || 'this property'}".
+            Our team will contact you shortly.
           </p>
           <p className="text-sm text-gray-500">
-            Alternatively, you can call {agent.name} directly at {agent.phone}
+            Alternatively, you can call us directly at {agent?.phone || property?.brokerContact || '+91 98765 43210'}
           </p>
         </div>
       </div>
@@ -107,6 +112,13 @@ export default function ContactForm({ property, agent }) {
         <h2 className="text-2xl font-bold mb-2">Inquire About This Property</h2>
         <p className="text-gray-600">Fill out the form below and our agent will get in touch with you.</p>
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+          {error}
+        </div>
+      )}
 
       {/* Agent Card */}
       {agentCard}
