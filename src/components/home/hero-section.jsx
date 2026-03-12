@@ -116,7 +116,7 @@ export default function HeroSection() {
                   Commercial Property
                 </span>
               </h1>
-              <p className="body-1 text-blue-100 max-w-2xl">
+              <p className="body-1 text-blue-900 max-w-2xl">
                 Discover premium office spaces, retail shops, and industrial properties across India's most business-friendly cities
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -144,15 +144,15 @@ export default function HeroSection() {
             <div className="grid grid-cols-3 gap-8 glass-strong rounded-xl p-6">
               <div className="text-center">
                 <div className="stats-1 brand.secondary">5000+</div>
-                <div className="text-sm text-blue-100">Properties</div>
+                <div className="text-sm text-blue-900">Properties</div>
               </div>
               <div className="text-center border-x border-white border-opacity-20">
                 <div className="stats-1 brand.secondary">1200+</div>
-                <div className="text-sm text-blue-100">Happy Clients</div>
+                <div className="text-sm text-blue-900">Happy Clients</div>
               </div>
               <div className="text-center">
                 <div className="stats-1 brand.secondary">25+</div>
-                <div className="text-sm text-blue-100">Cities</div>
+                <div className="text-sm text-blue-900">Cities</div>
               </div>
             </div>
           </div>

@@ -38,9 +38,9 @@ export default function FeaturedProperties() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Featured <span className="brand.secondary">Commercial Properties</span>
+              Featured <span className="text-amber-600">Commercial Properties</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-blue-900 max-w-2xl mx-auto">
               Discover our handpicked selection of premium commercial properties
             </p>
           </div>
@@ -130,11 +130,11 @@ export default function FeaturedProperties() {
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-in-up">
           <h2 className="heading-2 mb-6">
-            Featured <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
+            Featured <span className="text-amber-600 bg-gradient-to-r from-amber-600 to-yellow-400 bg-clip-text text-transparent">
               Commercial Properties
             </span>
           </h2>
-          <p className="body-1 text-gray-600 max-w-3xl mx-auto">
+          <p className="body-1 text-blue-900 max-w-3xl mx-auto">
             Discover our curated selection of premium commercial properties in prime locations
           </p>
         </div>
@@ -146,8 +146,8 @@ export default function FeaturedProperties() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
             </div>
-            <h3 className="heading-3 text-gray-900 mb-3">No Featured Properties Yet</h3>
-            <p className="text-gray-600 max-w-md mx-auto">
+            <h3 className="heading-3 text-blue-900 mb-3">No Featured Properties Yet</h3>
+            <p className="text-blue-800 max-w-md mx-auto">
               Check back soon for our latest premium commercial properties listings.
             </p>
           </div>

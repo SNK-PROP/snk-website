@@ -134,7 +134,7 @@ export default function PropertyCategories() {
               Property Type
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-blue-900 max-w-3xl mx-auto leading-relaxed">
             Find exactly what you're looking for with our specialized property categories
           </p>
         </div>
@@ -166,7 +166,7 @@ export default function PropertyCategories() {
 
                 {/* Title and description */}
                 <div className="text-center mb-6 relative z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:brand.primary transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
                     {category.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -177,12 +177,12 @@ export default function PropertyCategories() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                    <div className="text-2xl font-bold brand.secondary group-hover:brand.secondary-light transition-colors duration-300">{category.features}+</div>
-                    <div className="text-xs text-gray-500">Properties</div>
+                    <div className="text-2xl font-bold text-blue-800 group-hover:text-blue-600 transition-colors duration-300">{category.features}+</div>
+                    <div className="text-xs text-gray-600">Properties</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                    <div className="text-2xl font-bold brand.gold[600] group-hover:brand.gold[700] transition-colors duration-300">{category.growth}</div>
-                    <div className="text-xs text-gray-500">Growth</div>
+                    <div className="text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors duration-300">{category.growth}</div>
+                    <div className="text-xs text-gray-600">Growth</div>
                   </div>
                 </div>
 

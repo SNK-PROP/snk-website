@@ -197,12 +197,12 @@ export default function WhyChooseSNK() {
       <div className="relative container mx-auto px-4">
         {/* Stats Section */}
         <div className="text-center mb-20 animate-slide-in-up">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Why <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
+          <h2 className="text-amber-600 text-3xl md:text-5xl font-bold mb-6">
+            Why <span className="text-amber-600 bg-gradient-to-r from-amber-600 to-yellow-400 bg-clip-text text-transparent">
               Choose SNK
             </span> RealEstate?
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-blue-900 max-w-3xl mx-auto leading-relaxed">
             Trusted by businesses across India for premium commercial property solutions
           </p>
         </div>
@@ -220,11 +220,11 @@ export default function WhyChooseSNK() {
                 </div>
                 <div className="absolute -top-1 -right-1 w-6 h-6 brand.secondary rounded-full animate-ping"></div>
               </div>
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-brand-primary to-blue-600 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent mb-2">
                 {!loading && <StatCounter end={stat.number} />}
                 {loading && stat.number}
               </div>
-              <div className="text-gray-700 font-medium">{stat.label}</div>
+              <div className="text-blue-800 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -249,10 +249,10 @@ export default function WhyChooseSNK() {
 
                 {/* Content */}
                 <div className="relative">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-900 mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-blue-800 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -273,7 +273,7 @@ export default function WhyChooseSNK() {
         {/* Testimonials Section */}
         <div>
           <h3 className="text-2xl md:text-4xl font-bold text-center mb-16 animate-slide-in-up animate-delay-400">
-            What Our <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
+            What Our <span className="text-amber-600 bg-gradient-to-r from-amber-600 to-yellow-400 bg-clip-text text-transparent">
               Clients Say
             </span>
           </h3>
@@ -297,9 +297,9 @@ export default function WhyChooseSNK() {
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-xs brand.secondary font-semibold">{testimonial.company}</p>
+                    <h4 className="font-bold text-blue-900">{testimonial.name}</h4>
+                    <p className="text-sm text-blue-700">{testimonial.role}</p>
+                    <p className="text-xs text-amber-600 font-semibold">{testimonial.company}</p>
                   </div>
                 </div>
 
@@ -318,7 +318,7 @@ export default function WhyChooseSNK() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-gray-700 leading-relaxed italic mb-6 relative z-10">
+                <p className="text-blue-800 leading-relaxed italic mb-6 relative z-10">
                   "{testimonial.content}"
                 </p>
 
@@ -339,7 +339,7 @@ export default function WhyChooseSNK() {
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Ready to Experience the SNK Difference?
             </h3>
-            <p className="text-blue-100 mb-6">
+            <p className="text-blue-50 mb-6">
               Join thousands of satisfied clients who have found their perfect commercial properties with us.
             </p>
             <Button variant="default" className="brand.primary px-8 py-4 transform hover:scale-105">
