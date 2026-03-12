@@ -32,11 +32,11 @@ export default function SimilarProperties({ currentPropertyId }) {
 
   if (loading) {
     return (
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Similar <span className="text-gold">Properties</span>
+              Similar <span className="text-brand-gold">Properties</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -61,13 +61,13 @@ export default function SimilarProperties({ currentPropertyId }) {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Similar <span className="text-gold">Properties</span>
+            Similar <span className="text-brand-gold">Properties</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore other properties that might interest you
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function SimilarProperties({ currentPropertyId }) {
                 )}
                 <div className="absolute top-4 right-4 flex gap-2">
                   {property.isFeatured && (
-                    <span className="bg-gold text-white text-xs px-2 py-1 rounded-full">
+                    <span className="bg-brand-gold text-white text-xs px-2 py-1 rounded-full">
                       Featured
                     </span>
                   )}
@@ -104,7 +104,7 @@ export default function SimilarProperties({ currentPropertyId }) {
                 </div>
                 {/* Transaction Type Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-primary-blue text-white text-xs px-2 py-1 rounded-full capitalize">
+                  <span className="bg-brand-blue text-white text-xs px-2 py-1 rounded-full capitalize">
                     {property.transactionType || 'Sale'}
                   </span>
                 </div>
@@ -112,15 +112,15 @@ export default function SimilarProperties({ currentPropertyId }) {
 
               {/* Property Details */}
               <div className="p-6">
-                <div className="flex items-center gap-1 text-xs text-gray-500 mb-2">
+                <div className="flex items-center gap-1 text-xs text-muted-foreground mb-2">
                   <span className="text-lg">{getPropertyTypeIcon(property.propertyType)}</span>
                   <span className="capitalize">{property.propertyType || 'Commercial'}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
+                <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-1">
                   {property.title}
                 </h3>
 
-                <div className="space-y-2 text-sm text-gray-600 mb-3">
+                <div className="space-y-2 text-sm text-muted-foreground mb-3">
                   <div className="flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -139,10 +139,10 @@ export default function SimilarProperties({ currentPropertyId }) {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <span className="property-price text-lg font-bold text-primary-blue">
+                  <span className="property-price text-lg font-bold text-brand-blue">
                     {formatPrice(property.price)}
                   </span>
-                  <span className="text-sm text-primary-blue font-medium">
+                  <span className="text-sm text-brand-blue font-medium">
                     View Details →
                   </span>
                 </div>
@@ -154,7 +154,7 @@ export default function SimilarProperties({ currentPropertyId }) {
         <div className="text-center mt-12">
           <Link
             href="/properties"
-            className="inline-flex items-center bg-primary-blue hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+            className="inline-flex items-center bg-brand-blue hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
           >
             View All Properties
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

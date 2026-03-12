@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail, MapPin } from 'lucide-react'
 
 export default function Footer() {
   const footerLinks = {
@@ -23,10 +24,10 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { name: 'Facebook', icon: '📘', url: 'https://facebook.com/snkrealestate' },
-    { name: 'Twitter', icon: '🐦', url: 'https://twitter.com/snkrealestate' },
-    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/company/snkrealestate' },
-    { name: 'Instagram', icon: '📷', url: 'https://instagram.com/snkrealestate' }
+    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/snkrealestate' },
+    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/snkrealestate' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/company/snkrealestate' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/snkrealestate' }
   ]
 
   return (
@@ -44,15 +45,15 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
-                <span className="text-gold">📞</span>
+                <Phone className="text-gold h-4 w-4" />
                 <span>+91 98765 43210</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-gold">✉️</span>
+                <Mail className="text-gold h-4 w-4" />
                 <span>contact@snkrealestate.com</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-gold">📍</span>
+                <MapPin className="text-gold h-4 w-4" />
                 <span>Mumbai, Maharashtra</span>
               </div>
             </div>
@@ -124,7 +125,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="text-2xl hover:text-gold transition-colors"
                   >
-                    {social.icon}
+                    <social.icon className="h-6 w-6" />
                   </a>
                 ))}
               </div>

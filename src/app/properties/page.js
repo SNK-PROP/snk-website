@@ -57,6 +57,7 @@ export default function PropertiesPage() {
     if (searchParams.has('sortOrder')) newFilters.sortOrder = searchParams.get('sortOrder')
 
     setFilters(newFilters)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams])
 
   // Fetch properties when filters change
@@ -148,12 +149,12 @@ export default function PropertiesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 page-transition-enter page-transition-enter-active">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-blue to-blue-900 text-white py-12">
-        <div className="container mx-auto px-4">
+      <div className="bg-gradient-to-r from-primary-blue to-blue-900 text-white section-padding">
+        <div className="container">
           <nav className="flex items-center gap-2 text-sm mb-4">
-            <Link href="/" className="hover:text-gold transition-colors">Home</Link>
+            <Link href="/" className="hover:text-gold transition-colors link-underline">Home</Link>
             <span>/</span>
             <span className="text-gold">Properties</span>
           </nav>
@@ -178,11 +179,11 @@ export default function PropertiesPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="container section-padding">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-10">
           {/* Filters Sidebar */}
           <aside className={`lg:w-1/4 ${showMobileFilters ? 'fixed inset-0 bg-white z-50 overflow-y-auto p-6' : 'hidden lg:block'}`}>
-            <div className="bg-white rounded-xl shadow-md p-6 sticky top-4">
+            <div className="bg-white rounded-xl shadow-md card-padding sticky top-4">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900">Filters</h2>
                 {hasActiveFilters() && (
@@ -204,7 +205,7 @@ export default function PropertiesPage() {
                     placeholder="City, area, or landmark"
                     value={filters.location}
                     onChange={(e) => updateFilters({ location: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200 hover:border-gray-400 focus:shadow-lg"
                   />
                 </div>
 
@@ -214,7 +215,7 @@ export default function PropertiesPage() {
                   <select
                     value={filters.propertyType}
                     onChange={(e) => updateFilters({ propertyType: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200 hover:border-gray-400 focus:shadow-lg"
                   >
                     <option value="">All Types</option>
                     {propertyFilters.types.map(type => (
@@ -229,7 +230,7 @@ export default function PropertiesPage() {
                   <select
                     value={filters.transactionType}
                     onChange={(e) => updateFilters({ transactionType: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                   >
                     <option value="">All Types</option>
                     {propertyFilters.transactionTypes.map(type => (
@@ -241,20 +242,20 @@ export default function PropertiesPage() {
                 {/* Price Range */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Price Range (₹)</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-3">
                     <input
                       type="number"
                       placeholder="Min"
                       value={filters.minPrice}
                       onChange={(e) => updateFilters({ minPrice: e.target.value })}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200 hover:border-gray-400 focus:shadow-lg"
                     />
                     <input
                       type="number"
                       placeholder="Max"
                       value={filters.maxPrice}
                       onChange={(e) => updateFilters({ maxPrice: e.target.value })}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200 hover:border-gray-400 focus:shadow-lg"
                     />
                   </div>
                 </div>
@@ -262,7 +263,7 @@ export default function PropertiesPage() {
                 {/* Area Range */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Area Range (sqft)</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-3">
                     <input
                       type="number"
                       placeholder="Min"
@@ -286,7 +287,7 @@ export default function PropertiesPage() {
                   <select
                     value={filters.city}
                     onChange={(e) => updateFilters({ city: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                   >
                     <option value="">All Cities</option>
                     {propertyFilters.popularCities.map(city => (
@@ -301,7 +302,7 @@ export default function PropertiesPage() {
                   <select
                     value={filters.furnishing}
                     onChange={(e) => updateFilters({ furnishing: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                   >
                     <option value="">Any</option>
                     {propertyFilters.furnishingOptions.map(option => (
@@ -331,7 +332,7 @@ export default function PropertiesPage() {
                 {/* Mobile Filter Toggle */}
                 <button
                   onClick={() => setShowMobileFilters(!showMobileFilters)}
-                  className="lg:hidden flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="lg:hidden flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 hover:border-primary-blue hover:shadow-md active:scale-[0.95]"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -392,7 +393,7 @@ export default function PropertiesPage() {
 
             {/* Properties Grid */}
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden animate-pulse">
                     <div className="h-48 bg-gray-300"></div>
@@ -424,12 +425,12 @@ export default function PropertiesPage() {
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {properties.map((property) => (
                     <Link
                       key={property.id}
                       href={`/property/${property.id}`}
-                      className="bg-white rounded-xl shadow-md overflow-hidden card-hover group"
+                      className="bg-white rounded-xl shadow-md overflow-hidden card-hover group card-hover-reveal"
                     >
                       {/* Property Image */}
                       <div className="relative h-48 overflow-hidden">

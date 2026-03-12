@@ -29,14 +29,14 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="nav-glass shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary-blue">
+            <div className="text-2xl md:text-3xl font-bold text-foreground">
               SNK
-              <span className="text-gold">RealEstate</span>
+              <span className="text-primary-gold">RealEstate</span>
             </div>
           </Link>
 
@@ -46,9 +46,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-primary-blue font-medium transition-colors"
+                className="text-muted-foreground hover:text-foreground font-medium transition-all relative group hover:text-primary-glow link-underline-delay"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-gold transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -57,13 +58,13 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/login"
-              className="text-gray-700 hover:text-primary-blue font-medium"
+              className="text-muted-foreground hover:text-foreground font-medium transition-colors link-underline"
             >
               Login
             </Link>
             <Link
               href="/post-property"
-              className="btn-primary text-white"
+              className="btn-primary text-white border-glow hover:shadow-xl transition-shadow duration-200 active:scale-[0.98]"
             >
               Post Property
             </Link>
@@ -73,7 +74,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-primary-blue focus:outline-none"
+              className="text-muted-foreground hover:text-foreground focus:outline-none"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -89,12 +90,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-card border-t nav-glass">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-primary-blue font-medium"
+                  className="block px-3 py-2 text-muted-foreground hover:text-foreground font-medium"
                   onClick={toggleMenu}
                 >
                   {item.name}
@@ -103,7 +104,7 @@ export default function Header() {
               <div className="flex items-center space-x-4 px-3 py-2">
                 <Link
                   href="/login"
-                  className="text-gray-700 hover:text-primary-blue font-medium"
+                  className="text-muted-foreground hover:text-foreground font-medium"
                   onClick={toggleMenu}
                 >
                   Login

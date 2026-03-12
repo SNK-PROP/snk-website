@@ -2,18 +2,18 @@
 
 import * as React from "react";
 import {
-  IconDashboard,
-  IconSettings,
-  IconUsers,
-  IconHome,
-  IconUserCheck,
-  IconChartBar,
-  IconBuildingStore,
-  IconBriefcase,
-  IconGift,
-  IconDeviceMobile,
-  IconBell
-} from "@tabler/icons-react";
+  LayoutDashboard,
+  Settings,
+  Users,
+  Home,
+  UserCheck,
+  BarChart3,
+  Building,
+  Briefcase,
+  Gift,
+  Smartphone,
+  Bell
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,54 +41,54 @@ const staticData = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: IconDashboard,
+      icon: LayoutDashboard,
     },
     {
       title: "Users",
       url: "/users",
-      icon: IconUsers,
+      icon: Users,
     },
     {
       title: "Properties",
       url: "/properties",
-      icon: IconHome,
+      icon: Home,
     },
     {
       title: "Brokers",
       url: "/brokers",
-      icon: IconUserCheck,
+      icon: UserCheck,
     },
     {
       title: "Employees",
       url: "/employees",
-      icon: IconBriefcase,
+      icon: Briefcase,
     },
     {
       title: "Referrals",
       url: "/referrals",
-      icon: IconGift,
+      icon: Gift,
     },
     {
       title: "Analytics",
       url: "/analytics",
-      icon: IconChartBar,
+      icon: BarChart3,
     },
     {
       title: "App Versions",
       url: "/app-versions",
-      icon: IconDeviceMobile,
+      icon: Smartphone,
     },
     {
       title: "Notifications",
       url: "/notifications",
-      icon: IconBell,
+      icon: Bell,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
       url: "#",
-      icon: IconSettings,
+      icon: Settings,
     },
   ],
 };

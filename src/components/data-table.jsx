@@ -19,19 +19,19 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import {
-  IconChevronDown,
-  IconChevronLeft,
-  IconChevronRight,
-  IconChevronsLeft,
-  IconChevronsRight,
-  IconCircleCheckFilled,
-  IconDotsVertical,
-  IconGripVertical,
-  IconLayoutColumns,
-  IconLoader,
-  IconPlus,
-  IconTrendingUp,
-} from "@tabler/icons-react";
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  CircleCheck,
+  MoreVertical,
+  GripVertical,
+  Layout,
+  Loader,
+  Plus,
+  TrendingUp,
+} from "lucide-react";
 import {
   flexRender,
   getCoreRowModel,
@@ -117,7 +117,7 @@ function DragHandle({ id }) {
       size="icon"
       className="text-muted-foreground size-7 hover:bg-transparent"
     >
-      <IconGripVertical className="text-muted-foreground size-3" />
+      <GripVertical className="text-muted-foreground h-3 w-3" />
       <span className="sr-only">Drag to reorder</span>
     </Button>
   );
@@ -180,9 +180,9 @@ const columns = [
     cell: ({ row }) => (
       <Badge variant="outline" className="text-muted-foreground px-1.5">
         {row.original.status === "Done" ? (
-          <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
+          <CircleCheck className="fill-green-500 dark:fill-green-400 h-4 w-4" />
         ) : (
-          <IconLoader />
+          <Loader className="h-4 w-4 animate-spin" />
         )}
         {row.original.status}
       </Badge>
@@ -282,7 +282,7 @@ const columns = [
             className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
             size="icon"
           >
-            <IconDotsVertical />
+            <MoreVertical className="h-4 w-4" />
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
@@ -494,7 +494,7 @@ export function DataTable({ data: initialData, columns: customColumns }) {
               disabled={!table.getCanPreviousPage()}
             >
               <span className="sr-only">Go to first page</span>
-              <IconChevronsLeft />
+              <ChevronsLeft className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
@@ -504,7 +504,7 @@ export function DataTable({ data: initialData, columns: customColumns }) {
               disabled={!table.getCanPreviousPage()}
             >
               <span className="sr-only">Go to previous page</span>
-              <IconChevronLeft />
+              <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
@@ -514,7 +514,7 @@ export function DataTable({ data: initialData, columns: customColumns }) {
               disabled={!table.getCanNextPage()}
             >
               <span className="sr-only">Go to next page</span>
-              <IconChevronRight />
+              <ChevronRight className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
@@ -524,7 +524,7 @@ export function DataTable({ data: initialData, columns: customColumns }) {
               disabled={!table.getCanNextPage()}
             >
               <span className="sr-only">Go to last page</span>
-              <IconChevronsRight />
+              <ChevronsRight className="h-4 w-4" />
             </Button>
           </div>
         </div>
@@ -611,7 +611,7 @@ function TableCellViewer({ item }) {
               <div className="grid gap-2">
                 <div className="flex gap-2 leading-none font-medium">
                   Trending up by 5.2% this month{" "}
-                  <IconTrendingUp className="size-4" />
+                  <TrendingUp className="h-4 w-4" />
                 </div>
                 <div className="text-muted-foreground">
                   Showing total visitors for the last 6 months. This is just

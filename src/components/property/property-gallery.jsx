@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { getPropertyTypeIcon } from '@/lib/data'
+import { Building } from 'lucide-react'
 
 export default function PropertyGallery({ images = [], title = 'Property' }) {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -49,7 +50,7 @@ export default function PropertyGallery({ images = [], title = 'Property' }) {
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
-                <span className="text-8xl opacity-30">🏢</span>
+                <Building className="w-32 h-32 opacity-30" />
               </div>
             )}
             <button
@@ -142,7 +143,7 @@ export default function PropertyGallery({ images = [], title = 'Property' }) {
               />
             ) : (
               <div className="w-[600px] h-[400px] flex items-center justify-center bg-gray-800">
-                <span className="text-8xl opacity-30">🏢</span>
+                <Building className="w-32 h-32 opacity-30" />
               </div>
             )}
           </div>

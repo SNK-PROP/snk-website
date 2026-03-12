@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { getPropertyTypeIcon } from '@/lib/data'
+import { Briefcase } from 'lucide-react'
 
 export default function PropertyHeader({ property }) {
   const [saved, setSaved] = useState(false)
@@ -54,7 +55,7 @@ export default function PropertyHeader({ property }) {
                 {property.propertyType || property.type || 'Commercial'}
               </span>
               <span className="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm font-semibold capitalize flex items-center gap-1">
-                💼 {property.transactionType || 'Sale'}
+                <Briefcase className="h-4 w-4" /> {property.transactionType || 'Sale'}
               </span>
               {property.furnished && (
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">

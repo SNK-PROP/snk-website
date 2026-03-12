@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { submitContactInquiry } from '@/lib/data'
+import { Phone, Mail, MapPin } from 'lucide-react'
 
 export default function ContactCTA() {
   const [formData, setFormData] = useState({
@@ -49,19 +50,19 @@ export default function ContactCTA() {
 
   const contactMethods = [
     {
-      icon: '📞',
+      icon: Phone,
       title: 'Call Us',
       value: '+91 98765 43210',
       link: 'tel:+919876543210'
     },
     {
-      icon: '📧',
+      icon: Mail,
       title: 'Email Us',
       value: 'contact@snkrealestate.com',
       link: 'mailto:contact@snkrealestate.com'
     },
     {
-      icon: '📍',
+      icon: MapPin,
       title: 'Visit Us',
       value: '123 Business District, Mumbai, Maharashtra',
       link: '#'
@@ -109,7 +110,7 @@ export default function ContactCTA() {
                   className="group flex items-center gap-6 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-x-2 border border-white/20"
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-gold to-yellow-400 rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:scale-110">
-                    {method.icon}
+                    <method.icon className="h-8 w-8" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-1">{method.title}</h3>

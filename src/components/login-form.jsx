@@ -133,8 +133,8 @@ export function LoginForm({ className, ...props }) {
 
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden p-0">
+    <div className={cn("flex flex-col gap-8", className)} {...props}>
+      <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
           <div className="bg-muted relative hidden md:block">
             <img
@@ -163,7 +163,7 @@ export function LoginForm({ className, ...props }) {
                   <p className="text-xs text-blue-500 mt-2">Note: Real account has broker privileges</p>
                 </div>
               </div> */}
-              <div className="grid gap-3">
+              <div className="grid gap-4">
                 <Label htmlFor="email">Email Address</Label>
                 <Input
                   id="email"
@@ -174,11 +174,11 @@ export function LoginForm({ className, ...props }) {
                   required
                 />
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-4">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
-                  <Link 
-                    href="/forgot-password" 
+                  <Link
+                    href="/forgot-password"
                     className="text-sm text-blue-600 hover:text-blue-500 font-medium"
                   >
                     Forgot password?

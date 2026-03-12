@@ -2,40 +2,42 @@
 
 import { useEffect, useState } from 'react'
 import { fetchPublicStatistics } from '@/lib/data'
+import { Trophy, Handshake, Shield, Phone, BarChart, Target, Users, MapPin, Building, Smile } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const features = [
   {
-    icon: '🏆',
+    icon: Trophy,
     title: 'Verified Properties',
     description: 'All properties are thoroughly verified for authenticity and quality',
     iconColor: 'from-yellow-400 to-orange-500'
   },
   {
-    icon: '🤝',
+    icon: Handshake,
     title: 'Expert Agents',
     description: 'Connect with experienced real estate professionals',
     iconColor: 'from-blue-500 to-indigo-500'
   },
   {
-    icon: '🔒',
+    icon: Shield,
     title: 'Secure Transactions',
     description: 'Safe and secure property buying and selling process',
     iconColor: 'from-green-500 to-emerald-500'
   },
   {
-    icon: '📱',
+    icon: Phone,
     title: '24/7 Support',
     description: 'Round-the-clock customer support for your needs',
     iconColor: 'from-purple-500 to-pink-500'
   },
   {
-    icon: '📊',
+    icon: BarChart,
     title: 'Market Insights',
     description: 'Get latest market trends and property valuations',
     iconColor: 'from-blue-500 to-cyan-500'
   },
   {
-    icon: '🎯',
+    icon: Target,
     title: 'Personalized Service',
     description: 'Tailored solutions based on your specific requirements',
     iconColor: 'from-orange-500 to-red-500'
@@ -74,25 +76,25 @@ const fallbackStats = [
   {
     number: '5000+',
     label: 'Properties Listed',
-    icon: '🏢',
+    icon: Building,
     color: 'from-blue-500 to-blue-600'
   },
   {
     number: '1200+',
     label: 'Happy Clients',
-    icon: '😊',
+    icon: Smile,
     color: 'from-green-500 to-green-600'
   },
   {
     number: '150+',
     label: 'Agents Network',
-    icon: '👥',
+    icon: Users,
     color: 'from-gold to-yellow-500'
   },
   {
     number: '25',
     label: 'Cities Covered',
-    icon: '📍',
+    icon: MapPin,
     color: 'from-purple-500 to-purple-600'
   }
 ]
@@ -145,25 +147,25 @@ export default function WhyChooseSNK() {
           {
             number: response.totalProperties?.toLocaleString() + '+',
             label: 'Properties Listed',
-            icon: '🏢',
+            icon: Building,
             color: 'from-blue-500 to-blue-600'
           },
           {
             number: Math.floor(response.totalProperties * 0.25).toLocaleString() + '+',
             label: 'Happy Clients',
-            icon: '😊',
+            icon: Smile,
             color: 'from-green-500 to-green-600'
           },
           {
             number: response.totalBrokers?.toLocaleString() + '+',
             label: 'Agents Network',
-            icon: '👥',
+            icon: Users,
             color: 'from-gold to-yellow-500'
           },
           {
             number: response.totalCities?.toString() || '25',
             label: 'Cities Covered',
-            icon: '📍',
+            icon: MapPin,
             color: 'from-purple-500 to-purple-600'
           }
         ]
@@ -213,7 +215,7 @@ export default function WhyChooseSNK() {
             >
               <div className="relative inline-block">
                 <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg group-hover:shadow-2xl`}>
-                  <span className="text-3xl">{stat.icon}</span>
+                  <stat.icon className="h-10 w-10" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold rounded-full animate-ping"></div>
               </div>
@@ -240,7 +242,7 @@ export default function WhyChooseSNK() {
                 {/* Icon */}
                 <div className="relative flex justify-center mb-6">
                   <div className="w-24 h-24 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full flex items-center justify-center text-4xl transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-                    {feature.icon}
+                    <feature.icon className="h-12 w-12" />
                   </div>
                 </div>
 
@@ -339,9 +341,9 @@ export default function WhyChooseSNK() {
             <p className="text-blue-100 mb-6">
               Join thousands of satisfied clients who have found their perfect commercial properties with us.
             </p>
-            <button className="bg-white text-primary-blue px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform transition-all duration-300 hover:scale-105">
+            <Button variant="default" className="text-primary-blue px-8 py-4 transform hover:scale-105">
               Get Started Today
-            </button>
+            </Button>
           </div>
         </div>
       </div>

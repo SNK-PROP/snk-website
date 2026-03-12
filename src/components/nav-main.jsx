@@ -1,6 +1,6 @@
 "use client";
 
-import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react";
+import { CirclePlus, Mail } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export function NavMain({ items }) {
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild tooltip={item.title}>
                 <Link href={item.url}>
-                  {item.icon && <item.icon />}
+                  {item.icon && <item.icon className="h-5 w-5" />}
                   <span>{item.title}</span>
                 </Link>
               </SidebarMenuButton>
