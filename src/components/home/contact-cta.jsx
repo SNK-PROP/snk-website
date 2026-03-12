@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { submitContactInquiry } from '@/lib/data'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import { brand } from '@/design/colors'
 
 export default function ContactCTA() {
   const [formData, setFormData] = useState({
@@ -70,26 +71,26 @@ export default function ContactCTA() {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary-blue via-blue-800 to-primary-blue text-white relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-brand-primary via-blue-800 to-brand-primary text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-gold rounded-full filter blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-64 h-64 brand.secondary rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-gold rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-32 h-32 brand.secondary rounded-full filter blur-3xl"></div>
       </div>
 
       {/* Floating elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-20 w-2 h-2 bg-gold rounded-full animate-pulse-slow"></div>
+        <div className="absolute top-20 left-20 w-2 h-2 brand.secondary rounded-full animate-pulse-slow"></div>
         <div className="absolute top-40 right-32 w-1 h-1 bg-white rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-40 w-3 h-3 bg-gold rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-40 left-40 w-3 h-3 brand.secondary rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
         <div className="absolute bottom-20 right-20 w-2 h-2 bg-white rounded-full animate-pulse-slow" style={{ animationDelay: '3s' }}></div>
       </div>
 
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-in-up">
           <h2 className="text-3xl md:text-6xl font-bold mb-6">
-            Ready to Find Your <span className="text-gold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">
+            Ready to Find Your <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
               Perfect Property
             </span>?
           </h2>
@@ -109,24 +110,24 @@ export default function ContactCTA() {
                   href={method.link}
                   className="group flex items-center gap-6 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-x-2 border border-white/20"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-gold to-yellow-400 rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-16 h-16 bg-gradient-to-br from-brand-secondary to-yellow-400 rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:scale-110">
                     <method.icon className="h-8 w-8" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-1">{method.title}</h3>
                     <p className="text-blue-100">{method.value}</p>
                   </div>
-                  <svg className="w-6 h-6 text-gold transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 brand.secondary transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
               ))}
             </div>
 
-            <div className="bg-gradient-to-br from-gold/10 to-yellow-400/10 border border-gold/30 rounded-2xl p-8 backdrop-blur-sm">
+            <div className="bg-gradient-to-br from-brand-secondary/10 to-yellow-400/10 border border-brand-secondary/30 rounded-2xl p-8 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 brand.secondary rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 brand.primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -134,15 +135,15 @@ export default function ContactCTA() {
               </div>
               <div className="space-y-3 text-blue-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gold rounded-full"></div>
+                  <div className="w-2 h-2 brand.secondary rounded-full"></div>
                   <span>Monday - Friday: 9:00 AM - 7:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gold rounded-full"></div>
+                  <div className="w-2 h-2 brand.secondary rounded-full"></div>
                   <span>Saturday: 10:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gold rounded-full"></div>
+                  <div className="w-2 h-2 brand.secondary rounded-full"></div>
                   <span>Sunday: Closed</span>
                 </div>
               </div>
@@ -160,8 +161,8 @@ export default function ContactCTA() {
               </div>
 
               {/* Decorative corners */}
-              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-primary-blue to-transparent rounded-bl-2xl"></div>
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-blue to-transparent rounded-tr-2xl"></div>
+              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-brand-primary to-transparent rounded-bl-2xl"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-brand-primary to-transparent rounded-tr-2xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
@@ -170,7 +171,7 @@ export default function ContactCTA() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-primary-blue">Get in Touch</h3>
+                  <h3 className="text-3xl font-bold brand.primary">Get in Touch</h3>
                 </div>
 
                 {/* Success Message */}
@@ -270,7 +271,7 @@ export default function ContactCTA() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-gold to-yellow-400 text-primary-blue py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                      className="w-full bg-gradient-to-r from-brand-secondary to-yellow-400 text-brand-primary py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                     >
                       <span>{isSubmitting ? 'Submitting...' : 'Submit Inquiry'}</span>
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

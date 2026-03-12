@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { fetchProperties, formatPrice, getPropertyTypeIcon, getPropertyStatus } from '../../lib/data'
 import { Button } from '@/components/ui/button'
+import { brand } from '@/design/colors'
 
 export default function FeaturedProperties() {
   const [properties, setProperties] = useState([])
@@ -37,7 +38,7 @@ export default function FeaturedProperties() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Featured <span className="text-gold">Commercial Properties</span>
+              Featured <span className="brand.secondary">Commercial Properties</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our handpicked selection of premium commercial properties
@@ -87,7 +88,7 @@ export default function FeaturedProperties() {
                   </div>
 
                   {/* Button skeleton */}
-                  <div className="h-12 bg-gradient-to-r from-primary-blue to-blue-700 rounded-xl animate-pulse"></div>
+                  <div className="h-12 bg-gradient-to-r from-brand-primary to-blue-700 rounded-xl animate-pulse"></div>
                 </div>
               </div>
             ))}
@@ -102,7 +103,7 @@ export default function FeaturedProperties() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured <span className="text-gold">Commercial Properties</span>
+            Featured <span className="brand.secondary">Commercial Properties</span>
           </h2>
           <div className="bg-red-50 border border-red-200 rounded-lg p-8">
             <p className="text-red-600">{error}</p>
@@ -122,14 +123,14 @@ export default function FeaturedProperties() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-blue rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-72 h-72 bg-gold rounded-full filter blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-64 h-64 brand.primary rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-72 h-72 brand.secondary rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-in-up">
           <h2 className="heading-2 mb-6">
-            Featured <span className="text-gold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">
+            Featured <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
               Commercial Properties
             </span>
           </h2>
@@ -156,7 +157,7 @@ export default function FeaturedProperties() {
               <Link
                 key={property.id}
                 href={`/property/${property.id}`}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-1 border border-gray-200 hover:border-primary-blue animate-slide-in-up block card-enhanced"
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-1 border border-gray-200 hover:brand.primary animate-slide-in-up block card-enhanced"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Property Image */}
@@ -172,10 +173,10 @@ export default function FeaturedProperties() {
 
                   {/* Badges */}
                   <div className="absolute top-4 right-4 flex gap-2 z-10">
-                    <span className="bg-gold text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg backdrop-blur-sm pulse-subtle hover:bg-gold-light transition-colors duration-300">
+                    <span className="brand.secondary text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg backdrop-blur-sm pulse-subtle hover:brand.secondary-light transition-colors duration-300">
                       Featured
                     </span>
-                    <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg backdrop-blur-sm hover:bg-green-600 transition-colors duration-300">
+                    <span className="brand.gold[500] text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg backdrop-blur-sm hover:bg-brand-gold[600] transition-colors duration-300">
                       Verified
                     </span>
                   </div>
@@ -218,7 +219,7 @@ export default function FeaturedProperties() {
                         <h3 className="text-title text-gray-900 group-hover:text-primary-blue transition-colors duration-300">
                           {property.title}
                         </h3>
-                        <p className="text-sm text-gold font-semibold group-hover:text-gold-light transition-colors duration-300">
+                        <p className="text-sm brand.secondary font-semibold group-hover:brand.secondary-light transition-colors duration-300">
                           {property.propertyType}
                         </p>
                       </div>
@@ -277,7 +278,7 @@ export default function FeaturedProperties() {
                   </div>
 
                   {/* View Details Button */}
-                  <div className="w-full bg-gradient-to-r from-primary-blue to-blue-700 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transform hover:scale-105 transition-transform duration-300 hover:shadow-lg">
+                  <div className="w-full bg-gradient-to-r from-brand-primary to-blue-700 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transform hover:scale-105 transition-transform duration-300 hover:shadow-lg">
                     View Details
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -299,7 +300,7 @@ export default function FeaturedProperties() {
         <div className="text-center mt-16 animate-slide-in-up animate-delay-600">
           <Link
             href="/properties"
-            className="inline-flex items-center bg-gradient-to-r from-primary-blue to-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-1"
+            className="inline-flex items-center bg-gradient-to-r from-brand-primary to-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-1"
           >
             View All Properties
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

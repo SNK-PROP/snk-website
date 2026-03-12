@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { gradients, brand, opacity } from '@/design/colors'
 
 export default function HeroSection() {
   const router = useRouter()
@@ -58,12 +59,16 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="relative min-h-screen bg-[linear-gradient(135deg,theme(colors.brand.blue) 0%,#3730a3 100%)] text-white overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden"
+             style={{ background: gradients.blueToGold }}>
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-gold opacity-10 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400 opacity-10 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-500 opacity-10 rounded-full filter blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full filter blur-3xl animate-float-slow"
+             style={{ backgroundColor: opacity.brand.gold[30] }}></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full filter blur-3xl animate-float"
+             style={{ backgroundColor: brand.gold[300], animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full filter blur-3xl animate-float-slow"
+             style={{ backgroundColor: brand.blue[400], animationDelay: '2s' }}></div>
       </div>
 
       {/* Decorative building silhouettes */}
@@ -102,12 +107,12 @@ export default function HeroSection() {
           <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12 animate-slide-in-left">
             <div className="mb-8">
               <div className="inline-flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 bg-gold rounded-full animate-pulse"></div>
-                <span className="text-brand-gold font-semibold">India's Leading Commercial Real Estate Platform</span>
+                <div className="w-3 h-3 brand.secondary rounded-full animate-pulse"></div>
+                <span className="brand.secondary font-semibold">India's Leading Commercial Real Estate Platform</span>
               </div>
               <h1 className="display-1 text-display mb-6">
                 Find Your Perfect<br />
-                <span className="text-brand-gold bg-gradient-to-r from-brand-gold to-yellow-400 bg-clip-text text-transparent">
+                <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
                   Commercial Property
                 </span>
               </h1>
@@ -138,15 +143,15 @@ export default function HeroSection() {
             {/* Trust Indicators */}
             <div className="grid grid-cols-3 gap-8 glass-strong rounded-xl p-6">
               <div className="text-center">
-                <div className="stats-1 text-brand-gold">5000+</div>
+                <div className="stats-1 brand.secondary">5000+</div>
                 <div className="text-sm text-blue-100">Properties</div>
               </div>
               <div className="text-center border-x border-white border-opacity-20">
-                <div className="stats-1 text-brand-gold">1200+</div>
+                <div className="stats-1 brand.secondary">1200+</div>
                 <div className="text-sm text-blue-100">Happy Clients</div>
               </div>
               <div className="text-center">
-                <div className="stats-1 text-brand-gold">25+</div>
+                <div className="stats-1 brand.secondary">25+</div>
                 <div className="text-sm text-blue-100">Cities</div>
               </div>
             </div>
@@ -156,7 +161,7 @@ export default function HeroSection() {
           <div className="lg:w-1/2 animate-slide-in-right">
             <div className="relative">
               {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-gold text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
+              <div className="absolute -top-4 -right-4 brand.secondary text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
                 Instant Results
               </div>
 
@@ -165,7 +170,7 @@ export default function HeroSection() {
                 <form onSubmit={handleSearch} className="space-y-6">
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <svg className="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 brand.primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
                       <h3 className="heading-3 text-foreground">Search Properties</h3>
@@ -290,7 +295,7 @@ export default function HeroSection() {
                       onClick={() => handleQuickSearch('Mumbai')}
                       variant="ghost"
                       size="sm"
-                      className="hover:bg-gold hover:text-white transition-all duration-200 hover:scale-105"
+                      className="hover:brand.secondary hover:text-white transition-all duration-200 hover:scale-105"
                     >
                       Mumbai
                     </Button>
@@ -298,7 +303,7 @@ export default function HeroSection() {
                       onClick={() => handleQuickSearch('Delhi')}
                       variant="ghost"
                       size="sm"
-                      className="hover:bg-gold hover:text-white transition-all duration-200 hover:scale-105"
+                      className="hover:brand.secondary hover:text-white transition-all duration-200 hover:scale-105"
                     >
                       Delhi
                     </Button>
@@ -306,7 +311,7 @@ export default function HeroSection() {
                       onClick={() => handleQuickSearch('Bangalore')}
                       variant="ghost"
                       size="sm"
-                      className="hover:bg-gold hover:text-white transition-all duration-200 hover:scale-105"
+                      className="hover:brand.secondary hover:text-white transition-all duration-200 hover:scale-105"
                     >
                       Bangalore
                     </Button>
@@ -314,7 +319,7 @@ export default function HeroSection() {
                       onClick={() => handleQuickSearch('Hyderabad')}
                       variant="ghost"
                       size="sm"
-                      className="hover:bg-gold hover:text-white transition-all duration-200 hover:scale-105"
+                      className="hover:brand.secondary hover:text-white transition-all duration-200 hover:scale-105"
                     >
                       Hyderabad
                     </Button>
@@ -322,7 +327,7 @@ export default function HeroSection() {
                       onClick={() => handleQuickSearch('Chennai')}
                       variant="ghost"
                       size="sm"
-                      className="hover:bg-gold hover:text-white transition-all duration-200 hover:scale-105"
+                      className="hover:brand.secondary hover:text-white transition-all duration-200 hover:scale-105"
                     >
                       Chennai
                     </Button>

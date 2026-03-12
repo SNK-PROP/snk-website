@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { fetchPublicStatistics } from '@/lib/data'
 import { Trophy, Handshake, Shield, Phone, BarChart, Target, Users, MapPin, Building, Smile } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { brand } from '@/design/colors'
 
 const features = [
   {
@@ -89,7 +90,7 @@ const fallbackStats = [
     number: '150+',
     label: 'Agents Network',
     icon: Users,
-    color: 'from-gold to-yellow-500'
+    color: 'from-brand-secondary to-yellow-500'
   },
   {
     number: '25',
@@ -160,7 +161,7 @@ export default function WhyChooseSNK() {
             number: response.totalBrokers?.toLocaleString() + '+',
             label: 'Agents Network',
             icon: Users,
-            color: 'from-gold to-yellow-500'
+            color: 'from-brand-secondary to-yellow-500'
           },
           {
             number: response.totalCities?.toString() || '25',
@@ -188,8 +189,8 @@ export default function WhyChooseSNK() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-gray-100 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-primary-blue rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gold rounded-full filter blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 brand.primary rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 brand.secondary rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
       </div>
 
@@ -197,7 +198,7 @@ export default function WhyChooseSNK() {
         {/* Stats Section */}
         <div className="text-center mb-20 animate-slide-in-up">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Why <span className="text-gold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">
+            Why <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
               Choose SNK
             </span> RealEstate?
           </h2>
@@ -217,9 +218,9 @@ export default function WhyChooseSNK() {
                 <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg group-hover:shadow-2xl`}>
                   <stat.icon className="h-10 w-10" />
                 </div>
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-gold rounded-full animate-ping"></div>
+                <div className="absolute -top-1 -right-1 w-6 h-6 brand.secondary rounded-full animate-ping"></div>
               </div>
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-blue to-blue-600 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-brand-primary to-blue-600 bg-clip-text text-transparent mb-2">
                 {!loading && <StatCounter end={stat.number} />}
                 {loading && stat.number}
               </div>
@@ -258,7 +259,7 @@ export default function WhyChooseSNK() {
 
                 {/* Hover effect */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 brand.primary rounded-full flex items-center justify-center">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -272,7 +273,7 @@ export default function WhyChooseSNK() {
         {/* Testimonials Section */}
         <div>
           <h3 className="text-2xl md:text-4xl font-bold text-center mb-16 animate-slide-in-up animate-delay-400">
-            What Our <span className="text-gold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">
+            What Our <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
               Clients Say
             </span>
           </h3>
@@ -292,13 +293,13 @@ export default function WhyChooseSNK() {
 
                 {/* Avatar */}
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-blue to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 transform transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-16 h-16 bg-gradient-to-br from-brand-primary to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 transform transition-transform duration-300 group-hover:scale-110">
                     {testimonial.avatar}
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                     <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-xs text-gold font-semibold">{testimonial.company}</p>
+                    <p className="text-xs brand.secondary font-semibold">{testimonial.company}</p>
                   </div>
                 </div>
 
@@ -322,7 +323,7 @@ export default function WhyChooseSNK() {
                 </p>
 
                 {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 text-gold opacity-20">
+                <div className="absolute top-4 right-4 w-8 h-8 brand.secondary opacity-20">
                   <svg fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                   </svg>
@@ -334,14 +335,14 @@ export default function WhyChooseSNK() {
 
         {/* Call to action */}
         <div className="text-center mt-20 animate-slide-in-up animate-delay-800">
-          <div className="bg-gradient-to-r from-primary-blue to-blue-700 text-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl transform transition-all duration-300 hover:shadow-3xl hover:scale-105">
+          <div className="bg-gradient-to-r from-brand-primary to-blue-700 text-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl transform transition-all duration-300 hover:shadow-3xl hover:scale-105">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Ready to Experience the SNK Difference?
             </h3>
             <p className="text-blue-100 mb-6">
               Join thousands of satisfied clients who have found their perfect commercial properties with us.
             </p>
-            <Button variant="default" className="text-primary-blue px-8 py-4 transform hover:scale-105">
+            <Button variant="default" className="brand.primary px-8 py-4 transform hover:scale-105">
               Get Started Today
             </Button>
           </div>

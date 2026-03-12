@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { Building, Building2, ShoppingCart, Factory, Briefcase, Store } from 'lucide-react'
+import { brand, gradients } from '@/design/colors'
 
 const categories = [
   {
@@ -122,14 +123,14 @@ export default function PropertyCategories() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-gold rounded-full filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary-blue rounded-full filter blur-3xl opacity-20"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 brand.secondary rounded-full filter blur-3xl opacity-20"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 brand.primary rounded-full filter blur-3xl opacity-20"></div>
       </div>
 
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-12 animate-slide-in-up">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Browse by <span className="text-gold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">
+            Browse by <span className="brand.secondary bg-gradient-to-r from-brand-secondary to-yellow-400 bg-clip-text text-transparent">
               Property Type
             </span>
           </h2>
@@ -143,7 +144,7 @@ export default function PropertyCategories() {
             <a
               key={category.id}
               href={category.link}
-              className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-1 border border-gray-200 hover:border-primary-blue animate-fade-in-up card-enhanced"
+              className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-3xl transform transition-all duration-500 hover:-translate-y-1 border border-gray-200 hover:brand.primary animate-fade-in-up card-enhanced"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Gradient overlay */}
@@ -165,7 +166,7 @@ export default function PropertyCategories() {
 
                 {/* Title and description */}
                 <div className="text-center mb-6 relative z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-blue transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:brand.primary transition-colors duration-300">
                     {category.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -176,11 +177,11 @@ export default function PropertyCategories() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                    <div className="text-2xl font-bold text-gold group-hover:text-gold-light transition-colors duration-300">{category.features}+</div>
+                    <div className="text-2xl font-bold brand.secondary group-hover:brand.secondary-light transition-colors duration-300">{category.features}+</div>
                     <div className="text-xs text-gray-500">Properties</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                    <div className="text-2xl font-bold text-green-600 group-hover:text-green-700 transition-colors duration-300">{category.growth}</div>
+                    <div className="text-2xl font-bold brand.gold[600] group-hover:brand.gold[700] transition-colors duration-300">{category.growth}</div>
                     <div className="text-xs text-gray-500">Growth</div>
                   </div>
                 </div>
@@ -197,7 +198,7 @@ export default function PropertyCategories() {
                 <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-gradient-to-br from-gold/10 to-transparent rounded-full opacity-20"></div>
 
                 {/* Hover accent border */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary-blue rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 border-2 border-transparent group-hover:brand.primary rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
             </a>
           ))}
@@ -206,7 +207,7 @@ export default function PropertyCategories() {
         <div className="text-center mt-16 animate-slide-in-up animate-delay-400">
           <a
             href="#"
-            className="inline-flex items-center bg-gradient-to-r from-primary-blue to-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-1"
+            className="inline-flex items-center bg-gradient-to-r from-brand-primary to-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-1"
           >
             View All Categories
             <svg className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,8 +217,8 @@ export default function PropertyCategories() {
         </div>
 
         {/* Floating decorative elements */}
-        <div className="absolute top-10 left-10 w-4 h-4 bg-gold rounded-full animate-pulse-slow"></div>
-        <div className="absolute bottom-10 right-10 w-6 h-6 bg-primary-blue rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-10 left-10 w-4 h-4 brand.secondary rounded-full animate-pulse-slow"></div>
+        <div className="absolute bottom-10 right-10 w-6 h-6 brand.primary rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-yellow-400 rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
       </div>
     </section>
