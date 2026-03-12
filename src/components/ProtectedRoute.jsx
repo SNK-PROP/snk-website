@@ -22,7 +22,7 @@ export default function ProtectedRoute({ children }) {
         return;
       }
 
-      const token = localStorage.getItem("adminToken");
+      const token = typeof localStorage !== 'undefined' ? localStorage.getItem("adminToken") : null;
       if (!token) {
         setIsAuthenticated(false);
         router.push("/login");
@@ -32,7 +32,7 @@ export default function ProtectedRoute({ children }) {
       try {
         // For demo purposes, check if it's a demo token
         if (token.startsWith('demo-admin-token-')) {
-          const storedUser = localStorage.getItem('adminUser');
+          const storedUser = typeof localStorage !== 'undefined' ? localStorage.getItem('adminUser') : null;
           if (storedUser) {
             const user = JSON.parse(storedUser);
             if (user.userType === 'admin' || user.userType === 'broker') {
@@ -54,8 +54,10 @@ export default function ProtectedRoute({ children }) {
         
         // Check if user is admin or broker
         if (user.userType !== 'admin' && user.userType !== 'broker') {
-          localStorage.removeItem('adminToken');
-          localStorage.removeItem('adminUser');
+          if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
+          }
           setIsAuthenticated(false);
           router.push("/login?error=unauthorized");
           return;
@@ -63,7 +65,9 @@ export default function ProtectedRoute({ children }) {
 
         setIsAdmin(true);
         setIsAuthenticated(true);
-        localStorage.setItem('adminUser', JSON.stringify(user));
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('adminUser', JSON.stringify(user));
+          }
         
         // If user is authenticated and on login page, redirect to dashboard
         if (pathname === '/login') {
@@ -72,8 +76,10 @@ export default function ProtectedRoute({ children }) {
         
       } catch (error) {
         console.error('Auth check failed:', error);
-        localStorage.removeItem('adminToken');
-        localStorage.removeItem('adminUser');
+        if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem('adminToken');
+          localStorage.removeItem('adminUser');
+        }
         setIsAuthenticated(false);
         if (!isPublicRoute) {
           router.push("/login");

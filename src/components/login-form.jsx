@@ -58,8 +58,11 @@ export function LoginForm({ className, ...props }) {
         
         const demoToken = 'demo-admin-token-' + Date.now();
         
-        localStorage.setItem('adminToken', demoToken);
-        localStorage.setItem('adminUser', JSON.stringify(demoUser));
+        // Check if localStorage is available (prevents production build errors)
+        if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+          localStorage.setItem('adminToken', demoToken);
+          localStorage.setItem('adminUser', JSON.stringify(demoUser));
+        }
         
         toast.success('Demo login successful', {
           style: {
@@ -96,8 +99,11 @@ export function LoginForm({ className, ...props }) {
         });
       }
 
-      localStorage.setItem('adminToken', response.token);
-      localStorage.setItem('adminUser', JSON.stringify(response.user));
+      // Check if localStorage is available (prevents production build errors)
+      if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+        localStorage.setItem('adminToken', response.token);
+        localStorage.setItem('adminUser', JSON.stringify(response.user));
+      }
       
       // Only show success toast for admin users (broker toast already shown above)
       if (response.user.userType === 'admin') {

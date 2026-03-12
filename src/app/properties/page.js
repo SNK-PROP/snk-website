@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { fetchProperties, propertyFilters, formatPrice, getPropertyTypeIcon } from '@/lib/data'
 import Link from 'next/link'
 
-export default function PropertiesPage() {
+function PropertiesContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -570,5 +570,13 @@ export default function PropertiesPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function PropertiesPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+      <PropertiesContent />
+    </Suspense>
   )
 }

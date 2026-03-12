@@ -40,6 +40,15 @@ export default function HeroSection() {
     router.push(`/properties?location=${encodeURIComponent(location)}`)
   }
 
+  const [particles] = useState(() =>
+  Array.from({ length: 20 }, () => ({
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    delay: Math.random() * 4,
+    type: Math.floor(Math.random() * 3)
+  }))
+)
+
   const propertyTypes = [
     { value: 'commercial', label: 'Commercial' },
     { value: 'office', label: 'Office Space' },
@@ -66,18 +75,25 @@ export default function HeroSection() {
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white opacity-30 rounded-full"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: i % 4 === 0 ? 'pulse 3s ease-in-out infinite' : i % 3 === 0 ? 'float 6s ease-in-out infinite' : 'pulse 4s ease-in-out infinite',
-              animationDelay: `${Math.random() * 4}s`
-            }}
-          ></div>
-        ))}
+        <div className="absolute inset-0 pointer-events-none">
+  {particles.map((p, i) => (
+    <div
+      key={i}
+      className="absolute w-1 h-1 bg-white opacity-30 rounded-full"
+      style={{
+        top: `${p.top}%`,
+        left: `${p.left}%`,
+        animation:
+          p.type === 0
+            ? "pulse 3s ease-in-out infinite"
+            : p.type === 1
+            ? "float 6s ease-in-out infinite"
+            : "pulse 4s ease-in-out infinite",
+        animationDelay: `${p.delay}s`
+      }}
+    />
+  ))}
+</div>
       </div>
 
       <div className="relative container mx-auto px-4 pt-20 md:pt-0">
@@ -201,7 +217,7 @@ export default function HeroSection() {
                               <SelectValue placeholder="All Types" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="">All Types</SelectItem>
+                              <SelectItem value="all">All Types</SelectItem>
                               <SelectItem value="sale">For Sale</SelectItem>
                               <SelectItem value="rent">For Rent</SelectItem>
                               <SelectItem value="lease">For Lease</SelectItem>

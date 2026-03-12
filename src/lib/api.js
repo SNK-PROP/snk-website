@@ -14,7 +14,7 @@ class ApiService {
     // Add request interceptor to include auth token
     this.api.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem('adminToken');
+        const token = typeof localStorage !== 'undefined' ? localStorage.getItem('adminToken') : null;
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -30,8 +30,10 @@ class ApiService {
       (response) => response,
       (error) => {
         if (error.response?.status === 401) {
-          localStorage.removeItem('adminToken');
-          localStorage.removeItem('adminUser');
+          if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
+          }
           window.location.href = '/login';
         }
         return Promise.reject(error);
