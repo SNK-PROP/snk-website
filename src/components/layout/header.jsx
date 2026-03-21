@@ -34,7 +34,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="text-2xl md:text-3xl font-bold text-foreground">
+            <div className="text-2xl md:text-3xl font-bold text-gray-900">
               SNK
               <span className="text-primary-gold">RealEstate</span>
             </div>
@@ -46,7 +46,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground font-medium transition-all relative group hover:text-primary-glow link-underline-delay"
+                className="text-gray-700 hover:text-primary-blue font-medium transition-colors relative group link-underline-delay"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-gold transition-all duration-300 group-hover:w-full"></span>
@@ -58,7 +58,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/login"
-              className="text-muted-foreground hover:text-foreground font-medium transition-colors link-underline"
+              className="text-gray-700 hover:text-primary-blue font-medium transition-colors link-underline"
             >
               Login
             </Link>
@@ -74,7 +74,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-muted-foreground hover:text-foreground focus:outline-none"
+              className="text-gray-700 hover:text-primary-blue focus:outline-none"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -90,12 +90,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card border-t nav-glass">
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t nav-glass">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-muted-foreground hover:text-foreground font-medium"
+                  className="block px-3 py-2 text-gray-700 hover:text-primary-blue font-medium"
                   onClick={toggleMenu}
                 >
                   {item.name}
@@ -104,7 +104,7 @@ export default function Header() {
               <div className="flex items-center space-x-4 px-3 py-2">
                 <Link
                   href="/login"
-                  className="text-muted-foreground hover:text-foreground font-medium"
+                  className="text-gray-700 hover:text-primary-blue font-medium"
                   onClick={toggleMenu}
                 >
                   Login
