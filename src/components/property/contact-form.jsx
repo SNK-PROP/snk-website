@@ -59,16 +59,16 @@ export default function ContactForm({ property, agent }) {
   const agentCard = (
     <div className="bg-blue-50 rounded-lg p-6 mb-6">
       <h3 className="text-lg font-semibold mb-3">Your Agent</h3>
-      <div className="flex items-center gap-4">
-        <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-300 rounded-full flex items-center justify-center shrink-0">
           <span className="text-xl font-bold text-gray-600">{agent?.name?.charAt(0) || '?'}</span>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <h4 className="font-semibold text-gray-900">{agent?.name || property?.brokerName || 'Our Agent'}</h4>
           <p className="text-sm text-gray-600 mb-2">Professional Agent • {agent?.experience || property?.brokerExperience || 'Experienced'}</p>
           <p className="text-sm text-gray-600">{agent?.company || property?.brokerCompany || 'SNK RealEstate'}</p>
         </div>
-        <div className="text-right">
+        <div className="w-full sm:w-auto text-left sm:text-right">
           <a
             href={`tel:${agent?.phone || property?.brokerContact || '+919876543210'}`}
             className="block btn-primary text-white text-sm mb-2"

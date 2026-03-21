@@ -96,8 +96,8 @@ export default function PropertyHeader({ property }) {
           </div>
 
           {/* Price and Actions */}
-          <div className="flex flex-col items-end gap-4">
-            <div className="text-right">
+          <div className="flex flex-col w-full lg:w-auto items-start lg:items-end gap-4">
+            <div className="w-full text-left lg:text-right">
               <div className="text-sm text-gray-500 mb-1">
                 {property.transactionType === 'rent' ? 'Monthly Rent' : property.transactionType === 'lease' ? 'Annual Lease' : 'Total Price'}
               </div>
@@ -112,10 +112,10 @@ export default function PropertyHeader({ property }) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex w-full flex-col sm:flex-row sm:w-auto items-stretch sm:items-center gap-3">
               <button
                 onClick={toggleSave}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+                className={`flex w-full sm:w-auto items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-lg border transition-all ${
                   saved
                     ? 'bg-gold text-white border-gold'
                     : 'bg-white text-gray-700 border-gray-300 hover:border-gold hover:text-gold'
@@ -128,7 +128,7 @@ export default function PropertyHeader({ property }) {
               </button>
               <button
                 onClick={copyLink}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:border-primary-blue hover:text-primary-blue transition-all"
+                className="flex w-full sm:w-auto items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:border-primary-blue hover:text-primary-blue transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />

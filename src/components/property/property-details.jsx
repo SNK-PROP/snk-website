@@ -54,7 +54,7 @@ export default function PropertyDetails({ property }) {
   }
 
   return (
-    <section className="bg-card text-card-foreground rounded-xl shadow-lg p-8">
+    <section className="bg-card text-card-foreground rounded-xl shadow-lg p-5 sm:p-8">
       {/* Property Description */}
       <div className="mb-8">
         <h2 className="heading-2 text-foreground mb-4 flex items-center gap-2">
@@ -69,25 +69,25 @@ export default function PropertyDetails({ property }) {
       </div>
 
       {/* Property Highlights */}
-      <div className="mb-8 p-6 bg-gradient-to-r from-primary-blue/10 to-primary-gold/10 rounded-xl border border-primary-gold/20">
+      <div className="mb-8 p-4 sm:p-6 bg-gradient-to-r from-primary-blue/10 to-primary-gold/10 rounded-xl border border-primary-gold/20">
         <h3 className="text-subtitle text-foreground mb-4">Property Highlights</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-card rounded-lg shadow-sm">
+          <div className="text-center p-3 sm:p-4 bg-card rounded-lg shadow-sm">
             <div className="text-2xl mb-1">📐</div>
             <div className="text-sm text-muted-foreground">Area</div>
             <div className="price-1 text-primary-gold">{property.area || 'N/A'} {property.areaUnit || 'sqft'}</div>
           </div>
-          <div className="text-center p-4 bg-card rounded-lg shadow-sm">
+          <div className="text-center p-3 sm:p-4 bg-card rounded-lg shadow-sm">
             <Building className="h-8 w-8 mb-1" />
             <div className="text-sm text-muted-foreground">Type</div>
             <div className="text-subtitle text-primary-gold capitalize">{property.propertyType || property.type || 'Commercial'}</div>
           </div>
-          <div className="text-center p-4 bg-card rounded-lg shadow-sm">
+          <div className="text-center p-3 sm:p-4 bg-card rounded-lg shadow-sm">
             <MapPin className="h-8 w-8 mb-1" />
             <div className="text-sm text-muted-foreground">Location</div>
             <div className="address-1 text-primary-gold">{property.location?.city || 'N/A'}</div>
           </div>
-          <div className="text-center p-4 bg-card rounded-lg shadow-sm">
+          <div className="text-center p-3 sm:p-4 bg-card rounded-lg shadow-sm">
             <DollarSign className="h-8 w-8 mb-1" />
             <div className="text-sm text-muted-foreground">Price/Sqft</div>
             <div className="price-1 text-primary-gold">{property.pricePerSqft || 'N/A'}</div>
@@ -105,9 +105,9 @@ export default function PropertyDetails({ property }) {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {specifications.map((spec, index) => (
-            <div key={index} className="flex justify-between py-3 px-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <span className="text-gray-600 font-medium">{spec.label}</span>
-              <span className="font-semibold text-gray-900">{spec.value}</span>
+            <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 py-3 px-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors min-w-0">
+              <span className="text-gray-600 font-medium min-w-0">{spec.label}</span>
+              <span className="font-semibold text-gray-900 break-words sm:text-right min-w-0">{spec.value}</span>
             </div>
           ))}
         </div>
@@ -123,7 +123,7 @@ export default function PropertyDetails({ property }) {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {amenities.map((amenity, index) => (
-            <div key={index} className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors">
+            <div key={index} className="flex items-center gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors">
               <span className="text-2xl">{getAmenityIcon(amenity)}</span>
               <span className="text-sm font-medium text-gray-700">{amenity}</span>
             </div>

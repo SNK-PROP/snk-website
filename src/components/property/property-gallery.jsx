@@ -71,7 +71,7 @@ export default function PropertyGallery({ images = [], title = 'Property' }) {
         </div>
 
         {/* Thumbnail Gallery */}
-        <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
           {displayImages.map((image, index) => (
             <button
               key={index}
@@ -115,20 +115,20 @@ export default function PropertyGallery({ images = [], title = 'Property' }) {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-2"
+            className="absolute left-1 sm:left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-1 sm:p-2"
             aria-label="Previous image"
           >
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-9 h-9 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-2"
+            className="absolute right-1 sm:right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 p-1 sm:p-2"
             aria-label="Next image"
           >
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-9 h-9 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -142,7 +142,7 @@ export default function PropertyGallery({ images = [], title = 'Property' }) {
                 className="max-w-full max-h-full object-contain"
               />
             ) : (
-              <div className="w-[600px] h-[400px] flex items-center justify-center bg-gray-800">
+              <div className="w-full max-w-[600px] aspect-[3/2] flex items-center justify-center bg-gray-800">
                 <Building className="w-32 h-32 opacity-30" />
               </div>
             )}

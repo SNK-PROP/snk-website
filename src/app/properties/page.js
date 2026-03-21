@@ -158,11 +158,11 @@ function PropertiesContent() {
             <span>/</span>
             <span className="text-gold">Properties</span>
           </nav>
-          <h1 className="text-4xl font-bold mb-2">Find Your Perfect Property</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2">Find Your Perfect Property</h1>
           <p className="text-blue-100">Explore our extensive collection of commercial properties across India</p>
 
           {/* Stats Bar */}
-          <div className="flex flex-wrap gap-8 mt-8">
+          <div className="flex flex-wrap gap-6 sm:gap-8 mt-8">
             <div>
               <div className="text-2xl font-bold text-gold">{pagination.total}+</div>
               <div className="text-sm text-blue-100">Properties Found</div>

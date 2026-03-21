@@ -126,7 +126,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   onClick={() => router.push('/properties')}
-                  className="group items-center gap-2 animation-duration-200 hover:shadow-xl active:scale-[0.95] text-white"
+                  className="group w-full sm:w-auto items-center justify-center gap-2 animation-duration-200 hover:shadow-xl active:scale-[0.95] text-white"
                   variant="default"
                 >
                   <span>Explore Properties</span>
@@ -136,7 +136,7 @@ export default function HeroSection() {
                 </Button>
                 <Button
                   onClick={() => router.push('/contact')}
-                  className="animation-duration-200 hover:shadow-lg active:scale-[0.95] border-white/40 text-white hover:bg-white/15 hover:text-white"
+                  className="w-full sm:w-auto justify-center animation-duration-200 hover:shadow-lg active:scale-[0.95] border-white/40 text-white hover:bg-white/15 hover:text-white"
                   variant="outline"
                 >
                   Free Property Valuation
@@ -145,18 +145,18 @@ export default function HeroSection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-8 glass-strong rounded-xl p-6">
+            <div className="grid grid-cols-3 gap-3 sm:gap-8 glass-strong rounded-xl p-4 sm:p-6">
               <div className="text-center">
                 <div className="stats-1 text-gold-200">5000+</div>
-                <div className="text-sm text-white/80">Properties</div>
+                <div className="text-xs sm:text-sm text-white/80">Properties</div>
               </div>
-              <div className="text-center border-x border-white border-opacity-20">
+              <div className="text-center sm:border-x border-white border-opacity-20">
                 <div className="stats-1 text-gold-200">1200+</div>
-                <div className="text-sm text-white/80">Happy Clients</div>
+                <div className="text-xs sm:text-sm text-white/80">Happy Clients</div>
               </div>
               <div className="text-center">
                 <div className="stats-1 text-gold-200">25+</div>
-                <div className="text-sm text-white/80">Cities</div>
+                <div className="text-xs sm:text-sm text-white/80">Cities</div>
               </div>
             </div>
           </div>
@@ -165,12 +165,12 @@ export default function HeroSection() {
           <div className="lg:w-1/2 animate-slide-in-right">
             <div className="relative">
               {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-primary-gold text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
+              <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 bg-primary-gold text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-lg z-10">
                 Instant Results
               </div>
 
               {/* Search Box */}
-              <div className="bg-white rounded-2xl shadow-2xl p-8 transform transition-all hover:shadow-3xl gradient-overlay card-hover-lift">
+              <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 transform transition-all hover:shadow-3xl gradient-overlay card-hover-lift">
                 <form onSubmit={handleSearch} className="space-y-6">
                   <div>
                     <div className="flex items-center gap-2 mb-4">

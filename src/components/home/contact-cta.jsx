@@ -108,16 +108,16 @@ export default function ContactCTA() {
                 <a
                   key={index}
                   href={method.link}
-                  className="group flex items-center gap-6 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-x-2 border border-white/20"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 transform sm:hover:-translate-x-2 border border-white/20"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-brand-secondary to-yellow-400 rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-secondary to-yellow-400 rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:scale-110">
                     <method.icon className="h-8 w-8" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0 text-center sm:text-left">
                     <h3 className="text-xl font-bold mb-1">{method.title}</h3>
-                    <p className="text-blue-100">{method.value}</p>
+                    <p className="text-blue-100 break-words">{method.value}</p>
                   </div>
-                  <svg className="w-6 h-6 brand.secondary transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="hidden sm:block w-6 h-6 brand.secondary transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>

@@ -11,6 +11,11 @@ export const metadata = {
   description: 'Find the perfect commercial property for your business. Office spaces, retail shops, industrial properties, and more.',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${jetbrainsMono.variable}`}>
