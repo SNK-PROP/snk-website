@@ -116,9 +116,7 @@ export default function HeroSection() {
               </div>
               <h1 className="display-1 text-display mb-6 text-white">
                 Find Your Perfect<br />
-                <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-500 bg-clip-text text-transparent">
                   Commercial Property
-                </span>
               </h1>
               <p className="body-1 text-white/85 max-w-2xl">
                 Discover premium office spaces, retail shops, and industrial properties across India's most business-friendly cities
